@@ -7,25 +7,25 @@ contract BasicBank {
     constructor () {
          owner  = msg.sender;
          Users.push(User({
-            _user: owner,
+            id: owner,
             balance:10000000000000
          }));
     }
 
-    mapping (address => uint ) account;
+    mapping (address => User ) account;
     mapping (address => bool) isRegisteredUser;
 
     struct User{
-        address _user;
+        address id;
         uint balance;
 
     }
     User[] public Users;
-    function RegisterUser (address, uint) public {
+    function RegisterUser () public {
        require(isRegisteredUser[msg.sender] = false, "Account already registered");
         User memory  newUser = User({
-            _user:msg.sender,
-            balance:account[msg.sender]
+            id:msg.sender,
+            balance:5000
 
         });
         Users.push(newUser);
@@ -39,23 +39,21 @@ contract BasicBank {
     _;
 }
    
-    modifier CheckBalance(uint _amount){
-        require(_amount < account[msg.sender], "Insuffiecient Balance");
+    modifier CheckBalance(uint _balance){
+        require(_balance < account[msg.sender].balance, "Insuffiecient Balance");
         _;
     }
 
     function getACCountBalance  () public view returns (uint) {
-        return account[msg.sender];
+        return account[msg.sender].balance;
     }
     
     function Deposite () public payable{
-         account[msg.sender] += msg.value ;
-         getACCountBalance();
+         account[msg.sender].balance += msg.value ;
     }
 
      function Withdraw () public payable CheckBalance (msg.value) {
-         account[msg.sender] -= msg.value ;
-         getACCountBalance();
+         account[msg.sender].balance -= msg.value ;
     }
 
     function getDeposites () public view _isOwner returns (uint)  {
@@ -63,10 +61,14 @@ contract BasicBank {
     }
 
     function sendMoneyToUser (address  user ) public payable onlyRegisteredUser(user ) {
-        account[user] +=msg.value;
+        account[user].balance +=msg.value;
     }
     function getAllUsers () public view _isOwner returns ( User[] memory) {
            return Users;
 
+    }
+    function stake (uint _amount) public {
+        account[msg.sender].balance -= _amount;
+        account[owner].balance += _amount;
     }
 }

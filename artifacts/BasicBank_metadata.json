@@ -18,18 +18,7 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"name": "RegisterUser",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -47,7 +36,7 @@
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "_user",
+						"name": "id",
 						"type": "address"
 					},
 					{
@@ -87,7 +76,7 @@
 						"components": [
 							{
 								"internalType": "address",
-								"name": "_user",
+								"name": "id",
 								"type": "address"
 							},
 							{
@@ -129,6 +118,19 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "stake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -167,11 +169,11 @@
 			]
 		},
 		"contracts/SimpleBank.sol": {
-			"keccak256": "0x8dcf1b853bfbf2b0491600b40fa59c5043fe7fd7a02a71b48a4052592f0e5384",
+			"keccak256": "0xec5daaf69ec825704d274593be9736c9c7ac1aac9fefe457e4e35432ae85e3dc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://987f7cacb2f279671e588a24efab9f406d0b91ffeaafc783136756fd74f57b4e",
-				"dweb:/ipfs/QmSCtBPB7M7QcfkQKkwKURPgjHPPb36ypJBHgL9tF6oD2X"
+				"bzz-raw://6317db925e916bafa19f1bb3ae8baa981cd9b106d8658767a94e064e0989d039",
+				"dweb:/ipfs/QmewG6G8ZqWhNv6eQZDTZgMwbgnvNmJhvQJVrJt6GY89dS"
 			]
 		}
 	},
