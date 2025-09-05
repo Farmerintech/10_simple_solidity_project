@@ -56,6 +56,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "borrowMoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getACCountBalance",
 				"outputs": [
@@ -169,11 +182,11 @@
 			]
 		},
 		"contracts/SimpleBank.sol": {
-			"keccak256": "0xec5daaf69ec825704d274593be9736c9c7ac1aac9fefe457e4e35432ae85e3dc",
+			"keccak256": "0x7bec5c5810f68e1c4cffeb123c070c32bb6c028211e0d8f2ccf4aa0bea608368",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6317db925e916bafa19f1bb3ae8baa981cd9b106d8658767a94e064e0989d039",
-				"dweb:/ipfs/QmewG6G8ZqWhNv6eQZDTZgMwbgnvNmJhvQJVrJt6GY89dS"
+				"bzz-raw://7a115a46526e44de69760dfeaf21c8712f80d5f2411ea4346c727213931fb133",
+				"dweb:/ipfs/QmSkUMukJLqv9DrbRTyrn4m4fvx3uS4eMpic9GoedzYTrf"
 			]
 		}
 	},

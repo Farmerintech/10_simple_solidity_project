@@ -67,6 +67,11 @@ contract BasicBank {
            return Users;
 
     }
+     function borrowMoney (uint _amount) public {
+        account[msg.sender].balance += _amount;
+        account[owner].balance -= _amount;
+    }
+    
     function stake (uint _amount) public {
         account[msg.sender].balance -= _amount;
         account[owner].balance += _amount;
