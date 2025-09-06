@@ -1,42 +1,44 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3.0;
-
+pragma solidity ^0.8.20;
 
 contract Faucet {
-
     address public owner;
-    uint public balance;
-    constructor () {
+
+    uint256 public constant FAUCET_AMOUNT = 1e16; // 0.01 ether
+
+    // The cooldown period between requests.
+    uint256 public constant COOLDOWN_PERIOD = 1 days;
+
+    mapping(address => uint256) private lastRequestTime;
+
+    constructor() {
         owner = msg.sender;
     }
 
-    uint256 faucetAmount = 0.01 ether;
-
-    mapping(address => User ) public Account;
-
-    struct User {
-        address _address;
-        uint256 balance;
-        uint256 lastRequestTime;
-
-    }
-    modifier Cooldown(){
-        require(block.timestamp >= Account[msg.sender].lastRequestTime + 1 days, "Maximum claim for today on this account" );
+    modifier checkCooldown() {
+        require(
+            block.timestamp >= lastRequestTime[msg.sender] + COOLDOWN_PERIOD,
+            "You must wait before requesting again."
+        );
         _;
     }
-    modifier hadEnoughBalance () {
-        require(address(this).balance >= faucetAmount, "There is no enough funds in the faucet, check back later" );
+
+    // A modifier to ensure the contract has enough funds.
+    modifier checkBalance() {
+        require(
+            address(this).balance >= FAUCET_AMOUNT,
+            "The faucet is empty. Please check back later."
+        );
         _;
     }
-    function requestToken (address _addr) public payable hadEnoughBalance returns (string memory){
-        // User[msg.sender] = faucetAmount;
-         User({
-            _address:_addr,
-            balance: Account[_addr].balance += faucetAmount,
-            lastRequestTime:block.timestamp
-        });
-        // owner(this.balance)-=faucetAmount;
-        payable(_addr).transfer(faucetAmount);
-        return "Sent, Token on its way...";
+
+    receive() external payable {}
+
+    // A function for a user to request tokens from the faucet.
+    function requestTokens() public checkCooldown checkBalance {
+  
+        (bool sent, ) = msg.sender.call{value: FAUCET_AMOUNT}("");
+        require(sent, "Failed to send Ether.");
+        lastRequestTime[msg.sender] = block.timestamp;
     }
 }

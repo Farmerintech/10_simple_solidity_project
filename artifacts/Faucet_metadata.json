@@ -11,28 +11,12 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "Account",
+				"inputs": [],
+				"name": "COOLDOWN_PERIOD",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "_address",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
-						"name": "balance",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "lastRequestTime",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -41,7 +25,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "balance",
+				"name": "FAUCET_AMOUNT",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -66,23 +50,15 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_addr",
-						"type": "address"
-					}
-				],
-				"name": "requestToken",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "payable",
+				"inputs": [],
+				"name": "requestTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -113,11 +89,11 @@
 	},
 	"sources": {
 		"contracts/faucet.sol": {
-			"keccak256": "0xc2bd4fa2d2a2137206c9c9eb928f5b87b6684b5de866f1ae6a0dd084a375bd35",
+			"keccak256": "0x46562e64f6a529a7c52b28c14f71ede53cb4da9ffd4cb2594190e7bb5b44ffb9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://932edc2c186b419b9ba1f50875cc75b13d57198e489d68dbce598b5958a31f10",
-				"dweb:/ipfs/QmSmkcRXSdjgt8tNM65dfEHmjJpjAQs4Mf27uc83s7h2aX"
+				"bzz-raw://74fdcb55a56390da5aff11f15233ad1d1997e0bc77d4ecf59fe9328aa637637c",
+				"dweb:/ipfs/QmVVjUFHnyBQTFHC46cjwXGUFCMpkHXBEmWCfa3WxFQpkw"
 			]
 		}
 	},
