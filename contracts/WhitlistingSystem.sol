@@ -3,7 +3,7 @@ pragma solidity ^0.8.3.0;
 
 contract Whitlist {
 
-    mapping(address => bool) isWhitlisted;
+    mapping(address => bool) whitlistedList;
 
     address public owner;
 
@@ -17,10 +17,14 @@ contract Whitlist {
     }
 
     function addToWhiteList (address _address) public isOwner {
-        isWhitlisted[_address] = true;
+        whitlistedList[_address] = true;
     } 
 
      function removeFromWhiteList (address _address) public isOwner {
-        isWhitlisted[_address] = false;
+        whitlistedList[_address] = false;
     } 
+
+    function isWhitlisted (address _address) public view returns (bool){
+        return whitlistedList[_address];
+    }
 }
